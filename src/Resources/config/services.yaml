@@ -1,0 +1,30 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    Nalogka\ClickhouseMigrationsBundle\:
+        resource: '../../*'
+        exclude: '../../{DependencyInjection,Resources}'
+
+    clickhouse_migrations.configuration:
+        class: Nalogka\ClickhouseMigrationsBundle\Migrations\Configuration
+        arguments:
+            $tableName: ''
+            $migrationsPath: ''
+            $migrationsNamespace: ''
+    Nalogka\ClickhouseMigrationsBundle\Migrations\Configuration: '@clickhouse_migrations.configuration'
+
+    clickhouse_migrations.command.migrate:
+        class: Nalogka\ClickhouseMigrationsBundle\Command\MigrationsCommand
+        tags: [console.command]
+        arguments:
+            - '@Nalogka\ClickhouseMigrationsBundle\Migrations\MigrationsManager'
+    Nalogka\ClickhouseMigrationsBundle\Command\MigrationsCommand: '@clickhouse_migrations.command.migrate'
+
+    clickhouse_migrations.command.generate:
+        class: Nalogka\ClickhouseMigrationsBundle\Command\MigrationsGenerateCommand
+        tags: [console.command]
+        arguments:
+            - '@Nalogka\ClickhouseMigrationsBundle\Migrations\MigrationsManager'
+    Nalogka\ClickhouseMigrationsBundle\Command\MigrationsGenerateCommand: '@clickhouse_migrations.command.generate'
