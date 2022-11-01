@@ -1,5 +1,5 @@
 {
-    "name": "nalogka/clickhouse-migrations-bundle",
+    "name": "dmamontov/clickhouse-migrations-bundle",
     "type": "symfony-bundle",
     "description": "Symfony ClickhouseMigrationsBundle",
     "keywords": ["Clickhouse", "Migrations"],
@@ -8,6 +8,10 @@
         {
             "name": "Aleksandr Konnov",
             "email": "a.konnov73@bk.ru"
+        },
+        {
+            "name": "Dmitry Mamontov",
+            "email": "d@mamontov.tech"
         }
     ],
     "minimum-stability": "stable",
