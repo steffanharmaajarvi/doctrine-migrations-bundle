@@ -9,7 +9,7 @@ the application.
 ## Install
 
 ```
-composer require nalogka/clickhouse-migrations-bundle
+composer require dmamontov/clickhouse-migrations-bundle
 ```
 ## Clickhouse connection
 
