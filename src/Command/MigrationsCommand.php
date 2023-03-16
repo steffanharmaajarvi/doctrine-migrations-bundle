@@ -9,6 +9,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class MigrationsCommand extends AbstractMigrationCommand
 {
+    private const COMMAND_SUCCESS = 0;
     protected static $defaultName = 'clickhouse:migrations:migrate';
 
     protected function configure()
@@ -80,7 +81,7 @@ class MigrationsCommand extends AbstractMigrationCommand
             )
         );
 
-        return Command::SUCCESS;
+        return self::COMMAND_SUCCESS;
     }
 
     private function detectDirection(?string $direction)
