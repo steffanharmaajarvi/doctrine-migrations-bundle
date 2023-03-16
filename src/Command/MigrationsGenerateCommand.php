@@ -10,6 +10,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class MigrationsGenerateCommand extends AbstractMigrationCommand
 {
+    private const COMMAND_SUCCESS = 0;
     protected static $defaultName = 'clickhouse:migrations:generate';
 
     protected function configure()
@@ -23,7 +24,7 @@ class MigrationsGenerateCommand extends AbstractMigrationCommand
         $path = $generator->generateMigration();
         $this->io->write(sprintf('Success generate new Migration: %s', $path));
 
-        return Command::SUCCESS;
+        return self::COMMAND_SUCCESS;
     }
 
 }
