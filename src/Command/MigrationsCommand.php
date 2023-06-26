@@ -36,7 +36,7 @@ class MigrationsCommand extends AbstractMigrationCommand
             $this->migrationsManager->getClickhouseMigrationStorage()->getDatabaseName()
         );
 
-        if (!$input->hasOption('force')) {
+        if (!$input->getOption('force')) {
             if (!$this->canExecute($question, $input)) {
                 $this->io->error('Migration cancelled!');
 
@@ -76,7 +76,7 @@ class MigrationsCommand extends AbstractMigrationCommand
 
         $question = 'Are you sure you wish to continue?';
 
-        if (!$input->hasOption('force')) {
+        if (!$input->getOption('force')) {
             if (!$this->canExecute($question, $input)) {
                 $this->io->error('Migration cancelled!');
 
