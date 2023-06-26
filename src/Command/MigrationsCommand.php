@@ -5,6 +5,7 @@ namespace Nalogka\ClickhouseMigrationsBundle\Command;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 class MigrationsCommand extends AbstractMigrationCommand
@@ -20,6 +21,11 @@ class MigrationsCommand extends AbstractMigrationCommand
                 InputArgument::OPTIONAL,
                 'The direction for migration (up or down) to migrate to.',
                 'up'
+            )
+            ->addOption(
+                'force',
+                null,
+                InputOption::VALUE_NONE
             );
     }
 
@@ -30,11 +36,14 @@ class MigrationsCommand extends AbstractMigrationCommand
             $this->migrationsManager->getClickhouseMigrationStorage()->getDatabaseName()
         );
 
-        if (!$this->canExecute($question, $input)) {
-            $this->io->error('Migration cancelled!');
+        if (!$input->hasOption('force')) {
+            if (!$this->canExecute($question, $input)) {
+                $this->io->error('Migration cancelled!');
 
-            return 3;
+                return 3;
+            }
         }
+
         $direction = $this->detectDirection($input->getArgument('direction'));
 
         if ($direction === 'up') {
@@ -67,10 +76,12 @@ class MigrationsCommand extends AbstractMigrationCommand
 
         $question = 'Are you sure you wish to continue?';
 
-        if (!$this->canExecute($question, $input)) {
-            $this->io->error('Migration cancelled!');
+        if (!$input->hasOption('force')) {
+            if (!$this->canExecute($question, $input)) {
+                $this->io->error('Migration cancelled!');
 
-            return 3;
+                return 3;
+            }
         }
 
         $version = $direction === 'up' ? $this->migrationsManager->upMigrations() : $this->migrationsManager->downMigration();
