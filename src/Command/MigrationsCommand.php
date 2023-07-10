@@ -40,7 +40,7 @@ class MigrationsCommand extends AbstractMigrationCommand
             if (!$this->canExecute($question, $input)) {
                 $this->io->error('Migration cancelled!');
 
-                return 3;
+                return self::COMMAND_SUCCESS;
             }
         }
 
@@ -51,7 +51,7 @@ class MigrationsCommand extends AbstractMigrationCommand
             if (count($migrationsForExecute) === 0) {
                 $this->io->write('No migrations to execute.');
 
-                return 3;
+                return self::COMMAND_SUCCESS;
             }
             $this->io->writeln('Will be execute migrations:');
             foreach ($migrationsForExecute as $migrationVersion) {
@@ -67,7 +67,7 @@ class MigrationsCommand extends AbstractMigrationCommand
             if (!$last) {
                 $this->io->error('There are no applied migrations');
 
-                return 1;
+                return self::COMMAND_SUCCESS;
             }
             $this->io->warning(
                 sprintf('This migration will be down: %s', $this->migrationsManager->getLastAppliedMigration())
@@ -80,7 +80,7 @@ class MigrationsCommand extends AbstractMigrationCommand
             if (!$this->canExecute($question, $input)) {
                 $this->io->error('Migration cancelled!');
 
-                return 3;
+                return self::COMMAND_SUCCESS;
             }
         }
 
