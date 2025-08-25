@@ -18,7 +18,7 @@ class MigrationsGenerateCommand extends AbstractMigrationCommand
         $this->setDescription('Generate new empty clickhouse migration');
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $generator = new Generator($this->migrationsManager->getConfiguration());
         $path = $generator->generateMigration();

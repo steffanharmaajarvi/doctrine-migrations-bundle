@@ -34,7 +34,7 @@ class MigrationsManager
             $this->upMigration($version);
         }
 
-        return $version ?? null;
+        return $version;
     }
 
     /**
