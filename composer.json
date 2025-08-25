@@ -16,12 +16,12 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "php": ">=7.1",
-        "symfony/config": "*",
-        "symfony/dependency-injection": "*",
-        "smi2/phpclickhouse": "^1.4",
-        "symfony/console": "*",
-        "symfony/http-kernel": "*"
+      "php": ">=7.1",
+      "symfony/config": "^7.3.0",
+      "symfony/dependency-injection": "^7.3.0",
+      "smi2/phpclickhouse": "^1.4",
+      "symfony/console": "^7.3.0",
+      "symfony/http-kernel": "^7.3.0"
     },
     "autoload": {
         "psr-4": {
