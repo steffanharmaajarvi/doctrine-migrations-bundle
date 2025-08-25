@@ -1,10 +1,14 @@
 {
-    "name": "dmamontov/clickhouse-migrations-bundle",
+    "name": "steffanharmaajarvi/clickhouse-migrations-bundle",
     "type": "symfony-bundle",
     "description": "Symfony ClickhouseMigrationsBundle",
     "keywords": ["Clickhouse", "Migrations"],
     "license": "MIT",
     "authors": [
+        {
+            "name": "Steffan Kharmaaiarvi",
+            "email": "steffankharmaaiarvi@gmail.com"
+        },
         {
             "name": "Aleksandr Konnov",
             "email": "a.konnov73@bk.ru"
